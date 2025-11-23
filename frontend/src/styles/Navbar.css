@@ -1,0 +1,126 @@
+/* Navbar container */
+.navbar {
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 50;
+  top: 0;
+  transition: transform 0.3s ease-in-out;
+  padding: 1rem; /* Add padding to both sides for the desktop view */
+}
+
+/* Show navbar when visible */
+.navbar-visible {
+  transform: translateY(0);
+}
+
+/* Hide navbar when not visible */
+.navbar-hidden {
+  transform: translateY(-100%);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Navbar content */
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  width: 100%; /* Ensure the container spans the full width */
+}
+
+/* Logo styling */
+.logo .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2563eb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Desktop Navigation */
+.nav-links {
+  display: none;
+}
+
+.nav-item {
+  color: #4a5568;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  color: #2563eb;
+}
+
+/* Get Started button */
+.nav-button {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: auto; /* Move it towards the end of the navbar */
+}
+
+.nav-button:hover {
+  background-color: #1e40af;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: block;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: white;
+  border-top: 1px solid #e5e7eb;
+}
+
+.mobile-nav-item {
+  padding: 0.75rem;
+  color: #4a5568;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.mobile-nav-item:hover {
+  color: #2563eb;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  .nav-links {
+      display: flex;
+      gap: 1rem;
+      /* Center the items and add gap */
+  }
+
+  .mobile-menu {
+      display: none;
+  }
+}
