@@ -32,46 +32,46 @@ function Contact() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
- const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/clients`, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify(formData)
-});
+  try {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/clients`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    });
 
+    const result = await response.json();
 
-
-      const result = await response.json();
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.error || "Failed to send message.");
-      }
-
-      setStatus({
-        type: 'success',
-        message: 'Message sent successfully!',
-      });
-
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-      });
-
-    } catch (error) {
-      console.error("Error submitting contact form:", error);
-
-      setStatus({
-        type: 'error',
-        message: error.message || 'Failed to send message. Please try again.',
-      });
+    if (!response.ok || !result.success) {
+      throw new Error(result.error || "Failed to send message.");
     }
-  };
+
+    setStatus({
+      type: 'success',
+      message: 'Message sent successfully!',
+    });
+
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    });
+
+  } catch (error) {
+    console.error("Error submitting contact form:", error);
+
+    setStatus({
+      type: 'error',
+      message: error.message || 'Failed to send message. Please try again.',
+    });
+  }
+};
+
 
   return (
     <section id="contact" className="contact-section">
