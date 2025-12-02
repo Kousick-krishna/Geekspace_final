@@ -19,6 +19,8 @@ function Contact() {
     message: ''
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const [status, setStatus] = useState({
     type: '',
     message: ''
@@ -33,6 +35,7 @@ function Contact() {
 
   const handleSubmit = async (e) => {
   e.preventDefault();
+  setIsLoading(true);
 
   try {
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/clients`, {
@@ -69,6 +72,9 @@ function Contact() {
       type: 'error',
       message: error.message || 'Failed to send message. Please try again.',
     });
+  }
+  finally {
+    setIsLoading(false);   // 🔥 Stop loading
   }
 };
 
@@ -148,9 +154,17 @@ function Contact() {
                 ></textarea>
               </div>
 
-              <button type="submit" className="submit-btn">
-                Send Message
-              </button>
+              <button type="submit" className="submit-btn" disabled={isLoading}>
+  {isLoading ? (
+    <div className="loading-container">
+      <span className="loader"></span>
+      Sending...
+    </div>
+  ) : (
+    "Send Message"
+  )}
+</button>
+
             </form>
           </div>
         </div>
